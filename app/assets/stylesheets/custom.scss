@@ -1,5 +1,5 @@
-@import "bootstrap-sprockets";
-@import "bootstrap";
+@import 'bootstrap-sprockets';
+@import 'bootstrap';
 
 $gray-medium-light: #eaeaea;
 
@@ -11,7 +11,10 @@ $gray-medium-light: #eaeaea;
 
 // Forms
 
-input, textarea, select, .uneditable-input {
+input,
+textarea,
+select,
+.uneditable-input {
   border: 1px solid #bbb;
   width: 100%;
   margin-bottom: 15px;
@@ -35,6 +38,20 @@ input {
   .form-control {
     color: $state-danger-text;
   }
+}
+
+.checkbox {
+  margin-top: -10px;
+  margin-bottom: 10px;
+  span {
+    margin-left: 20px;
+    font-weight: normal;
+  }
+}
+
+#session_remember_me {
+  width: auto;
+  margin-left: 0;
 }
 
 // Universal
@@ -62,9 +79,14 @@ textarea {
   margin-bottom: 10px;
 }
 
-// Typography 
+// Typography
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   line-height: 1;
 }
 
@@ -76,7 +98,7 @@ h1 {
 }
 
 h2 {
-  font-size: 1.2em ;
+  font-size: 1.2em;
   letter-spacing: -1px;
   margin-bottom: 30px;
   text-align: center;
@@ -89,7 +111,7 @@ p {
   line-height: 1.7em;
 }
 
-// Header 
+// Header
 
 #logo {
   float: left;
@@ -106,9 +128,7 @@ p {
   }
 }
 
-
-
-// Footer 
+// Footer
 
 footer {
   margin-top: 45px;
@@ -135,7 +155,7 @@ footer {
 }
 
 @media (max-width: 800px) {
-  footer { 
+  footer {
     small {
       display: block;
       float: none;
@@ -152,7 +172,7 @@ footer {
   }
 }
 
-// Sidebar 
+// Sidebar
 
 aside {
   section.user_info {
@@ -160,7 +180,7 @@ aside {
   }
   section {
     padding: 10px 0;
-    margin-top: 20px; 
+    margin-top: 20px;
     &:first-child {
       border: 0;
       padding-top: 0;
@@ -186,10 +206,10 @@ aside {
 }
 
 .gravatar_edit {
-  margin-top: 15px
+  margin-top: 15px;
 }
 
-// Miscellaneous 
+// Miscellaneous
 
 .debug-dump {
   clear: both;
@@ -198,10 +218,8 @@ aside {
   margin-top: 45px;
 }
 
-// Dropdown menu 
+// Dropdown menu
 
 .dropdown-menu.active {
   display: block;
 }
-
-

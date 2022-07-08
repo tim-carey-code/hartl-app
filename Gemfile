@@ -3,24 +3,24 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby "3.1.2"
 
-gem "rails",           "7.0.2.3"
-gem "bcrypt",          "3.1.16"
+gem "rails", "7.0.2.3"
+gem "bcrypt", "3.1.16"
 gem "bootstrap-sass"
 gem "will_paginate", "3.3.1"
 gem "bootstrap-will_paginate", "1.0.0"
-gem "sassc-rails",     "2.1.2"
+gem "sassc-rails", "2.1.2"
 gem "sprockets-rails", "3.4.2"
 gem "importmap-rails", "1.0.3"
-gem "faker",           "2.21.0"
-gem "turbo-rails",     "1.0.1"
-gem "stimulus-rails",  "1.0.4"
-gem "jbuilder",        "2.11.5"
-gem "puma",            "5.6.4"
-gem "bootsnap",        "1.11.1", require: false
+gem "faker", "2.21.0"
+gem "turbo-rails", "1.0.1"
+gem "stimulus-rails", "1.0.4"
+gem "jbuilder", "2.11.5"
+gem "puma", "5.6.4"
+gem "bootsnap", "1.11.1", require: false
 
 group :development, :test do
   gem "sqlite3", "1.4.2"
-  gem "debug",   "1.4.0", platforms: %i[ mri mingw x64_mingw ]
+  gem "debug", "1.4.0", platforms: %i[mri mingw x64_mingw]
 end
 
 group :development do
@@ -28,14 +28,14 @@ group :development do
 end
 
 group :test do
-  gem "capybara",                 "3.36.0"
-  gem "selenium-webdriver",       "4.1.0"
-  gem "webdrivers",               "5.0.0"
+  gem "capybara", "3.36.0"
+  gem "selenium-webdriver", "4.1.0"
+  gem "webdrivers", "5.0.0"
   gem "rails-controller-testing", "1.0.5"
-  gem "minitest",                 "5.15.0"
-  gem "minitest-reporters",       "1.5.0"
-  gem "guard",                    "2.18.0"
-  gem "guard-minitest",           "2.4.6"
+  gem "minitest", "5.15.0"
+  gem "minitest-reporters", "1.5.0"
+  gem "guard", "2.18.0"
+  gem "guard-minitest", "2.4.6"
 end
 
 group :production do

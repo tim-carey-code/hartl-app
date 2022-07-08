@@ -2,7 +2,7 @@ class SessionsController < ApplicationController
   def new
   end
 
-  def create 
+  def create
     user = User.find_by(email: params[:session][:email].downcase)
     if user && user.authenticate(params[:session][:password])
       if user.activated?
@@ -17,15 +17,14 @@ class SessionsController < ApplicationController
         flash[:warning] = message
         redirect_to root_url
       end
-    else 
+    else
       flash.now[:danger] = "Invalid email/password combination"
       render "new", status: :unprocessable_entity
-    end 
+    end
   end
 
   def destroy
     log_out if logged_in?
-    redirect_to root_url, status: :see_other 
+    redirect_to root_url, status: :see_other
   end
-
 end

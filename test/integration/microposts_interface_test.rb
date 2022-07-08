@@ -3,6 +3,7 @@ class MicropostsInterface < ActionDispatch::IntegrationTest
   def setup
     @user = users(:timothy)
     log_in_as(@user)
+    @micropost = assigns(:micrposts)
   end
 end
 
@@ -45,5 +46,19 @@ class MicropostsInterfaceTest < MicropostsInterface
   test "should not have delete links on other user's profile page" do
     get user_path(users(:michael))
     assert_select "a", {text: "delete", count: 0}
+  end
+end
+
+class ImageUploadTest < MicropostsInterface
+  test "should have a file input field for images" do
+    get root_path
+    assert_select "input[type=file]"
+  end
+
+  test "should be able to attach an image" do
+    cont = "This micropost has an image"
+    img = fixture_file_upload("kitten.jpg", "image/jpeg")
+    post microposts_path, params: {micropost: {content: cont, image: img}}
+    # assert microposts.image.attached?
   end
 end

@@ -1,0 +1,15 @@
+one:
+  follower: timothy
+  followed: lana
+
+two:
+  follower: timothy
+  followed: malory
+
+three:
+  follower: lana
+  followed: timothy
+
+four:
+  follower: archer
+  followed: timothy

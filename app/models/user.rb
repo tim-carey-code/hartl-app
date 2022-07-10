@@ -8,6 +8,17 @@ class User < ApplicationRecord
   validates :password, presence: true, length: {minimum: 6}, allow_nil: true
   attr_accessor :remember_token, :activation_token, :reset_token
 
+  has_many :active_relationships, class_name: "Relationship",
+    foreign_key: "follower_id",
+    dependent: :destroy
+
+  has_many :passive_relationships, class_name: "Relationship",
+    foreign_key: "followed_id",
+    dependent: :destroy
+
+  has_many :following, through: :active_relationships, source: :followed
+  has_many :followers, through: :passive_relationships
+
   has_secure_password
 
   has_many :microposts, dependent: :destroy
@@ -34,10 +45,6 @@ class User < ApplicationRecord
     digest = send("#{attribute}_digest")
     return false if digest.nil?
     BCrypt::Password.new(digest).is_password?(token)
-  end
-
-  def feed
-    Micropost.where("user_id = ?", id)
   end
 
   def forget
@@ -67,8 +74,31 @@ class User < ApplicationRecord
     UserMailer.account_activation(self).deliver_now
   end
 
+  # Follows a user.
+  def follow(other_user)
+    following << other_user unless self == other_user
+  end
+
+  # Unfollows a user.
+  def unfollow(other_user)
+    following.delete(other_user)
+  end
+
+  # Returns true if the current user is following the other user.
+  def following?(other_user)
+    following.include?(other_user)
+  end
+
   def password_reset_expired?
     reset_sent_at < 2.hours.ago
+  end
+
+  def feed
+    following_ids = "SELECT followed_id FROM relationships
+                     WHERE follower_id = :user_id"
+    Micropost.where("user_id IN (#{following_ids})
+                     OR user_id = :user_id", user_id: id)
+      .includes(:user, image_attachment: :blob)
   end
 
   private
